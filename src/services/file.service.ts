@@ -56,7 +56,11 @@ class FileService {
                 createdAt: true,
             },
         });
-        const totalCount = await prisma.file.count();
+        const totalCount = await prisma.file.count({
+            where: {
+                userId: id,
+            },
+        });
 
         return { files, totalCount };
     }
